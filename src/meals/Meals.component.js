@@ -42,7 +42,7 @@ const mealRatings = {
   dish3: 0
 };
 
-//TODO: do I even really need the state?
+//TODO: do I even really need the state? --> no, but we can use it here
 function Meals() {
   const [ratingState, setRating] = React.useState(mealRatings);
 
@@ -59,9 +59,12 @@ function Meals() {
         setRating({ ...ratingState, dish3: newRatingValue });
         break;
     }
-    console.log(ratingState);
+
     handleIncludeRating(dish, newRatingValue);
     handleClickOpen();
+    const timestamp = new Date();
+    const storeObject = { [dish]: newRatingValue };
+    localStorage.setItem(timestamp, JSON.stringify(storeObject));
   };
 
   const [open, setOpen] = React.useState(false);
@@ -107,7 +110,7 @@ function Meals() {
       <div>
         <Dialog
           open={open}
-          //onClose={handleClose}
+          onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
