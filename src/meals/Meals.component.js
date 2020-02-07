@@ -22,7 +22,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 const StyledCard = styled(Card)`
   min-width: 275px;
-  margin: 5px;
+  margin: 15px;
   min-height: 200px;
 `;
 
@@ -90,7 +90,9 @@ function Meals() {
       return (
         <StyledCard key={option.name}>
           <CardContent>
-            <Typography>{option.name}</Typography>
+            <Typography variant="h1" align="center">
+              {option.name}
+            </Typography>
             <CardActions>
               {/* TODO: add sth here to expand a textfield for detailed review */}
             </CardActions>
