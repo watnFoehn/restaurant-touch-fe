@@ -22,12 +22,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 const StyledCard = styled(Card)`
   min-width: 275px;
-  margin: 15px;
+  margin: 15px auto;
   min-height: 200px;
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
 `;
 
 const mealOptions = [
@@ -90,7 +92,7 @@ function Meals() {
       return (
         <StyledCard key={option.name}>
           <CardContent>
-            <Typography variant="h1" align="center">
+            <Typography variant="h3" align="center">
               {option.name}
             </Typography>
             <CardActions>
