@@ -28,7 +28,7 @@ function App() {
   return (
     <Wrapper className="App">
       <ThemeProvider theme={theme}>
-        <Typography variant="h2">Please rate your meal</Typography>
+        <Typography variant="h4">Please rate your meal</Typography>
         <Meals />
       </ThemeProvider>
     </Wrapper>

@@ -9,8 +9,6 @@ import styled from "styled-components";
 import RatingComponent from "../rating/Rating.component";
 import AlertDialog from "../alert/Alert.component";
 
-import api from "../api";
-
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -82,7 +80,6 @@ function Meals() {
   const handleIncludeRating = async (dish, newRatingValue) => {
     //const { name, rating, time } = this.state
     let newRatingObject = { name: dish, rating: newRatingValue };
-    await api.insertRating(newRatingObject);
   };
 
   const renderMealOptions = () => {
@@ -116,6 +113,8 @@ function Meals() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          {/* TODO: change the message to sum what you just rated */}
+          {/* TODO: close message automatically after 3 seconds */}
           <DialogTitle id="alert-dialog-title">
             {"Thank you very much for the rating!"}
           </DialogTitle>
