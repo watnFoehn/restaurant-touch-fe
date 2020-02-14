@@ -14,6 +14,11 @@ const theme = createMuiTheme({
         // Some CSS
         fontSize: 80
       }
+    },
+    MuiDialog: {
+      root: {
+        fontSize: 80
+      }
     }
   }
 });

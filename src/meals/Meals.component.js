@@ -2,19 +2,12 @@
 
 import React from "react";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
 import RatingComponent from "../rating/Rating.component";
-import AlertDialog from "../alert/Alert.component";
 
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 //TODO: decide if we need a grid here, change size of buttons
 
@@ -43,6 +36,7 @@ const mealRatings = {
 //TODO: do I even really need the state? --> no, but we can use it here
 function Meals() {
   const [ratingState, setRating] = React.useState(mealRatings);
+  const [lastRating, setLastRating] = React.useState({});
 
   const handleRating = (e, dish) => {
     let newRatingValue = parseInt(e.target.value);
@@ -69,17 +63,20 @@ function Meals() {
 
   const handleClickOpen = () => {
     setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+    }, 2300);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setRating(mealRatings);
-    console.log(ratingState);
+    console.log(lastRating);
   };
 
   const handleIncludeRating = async (dish, newRatingValue) => {
     //const { name, rating, time } = this.state
     let newRatingObject = { name: dish, rating: newRatingValue };
+    setLastRating(newRatingObject);
   };
 
   const renderMealOptions = () => {
@@ -90,9 +87,6 @@ function Meals() {
             <Typography variant="h3" align="center">
               {option.name}
             </Typography>
-            <CardActions>
-              {/* TODO: add sth here to expand a textfield for detailed review */}
-            </CardActions>
             <RatingComponent
               handleRating={(e, dishName) => handleRating(e, dishName)}
               dishName={option.name}
@@ -113,16 +107,14 @@ function Meals() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          {/* TODO: change the message to sum what you just rated */}
           {/* TODO: close message automatically after 3 seconds */}
-          <DialogTitle id="alert-dialog-title">
-            {"Thank you very much for the rating!"}
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Ok
-            </Button>
-          </DialogActions>
+          <Typography id="alert-dialog-title" variant="h2">
+            {"You rated "}
+            {lastRating.name} {" with "} {lastRating.rating} {" stars."}
+          </Typography>
+          <Typography variant="h3">
+            <p></p>Thank you very much!
+          </Typography>
         </Dialog>
       </div>
     </Wrapper>
