@@ -21,9 +21,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 //TODO: decide if we need a grid here, change size of buttons
 
 const StyledCard = styled(Card)`
-  min-width: 275px;
   margin: 15px auto;
-  min-height: 200px;
 `;
 
 const Wrapper = styled.div`
